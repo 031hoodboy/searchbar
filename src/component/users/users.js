@@ -1,15 +1,28 @@
-// import { User } from "../user/user";
+import React from "react";
+import styled from "styled-components";
 
 export const Users = (props) => {
   return (
-    <div>
+    <UserBlock>
       {props.users.map((user) => (
-        <>
-          <h2>{user.name}</h2>
-          <h4>{user.email}</h4>
-          {/* <User key={user.id} user={user} /> */}
-        </>
+        <InfoWrapper>
+          <Name>{user.name}</Name>
+          <Email>{user.email}</Email>
+        </InfoWrapper>
       ))}
-    </div>
+    </UserBlock>
   );
 };
+
+const UserBlock = styled.div`
+  width: 80%;
+`;
+
+const InfoWrapper = styled.div`
+  width: 3000px;
+`;
+
+const Name = styled.div`
+  width: 3000px;
+`;
+const Email = styled.div``;

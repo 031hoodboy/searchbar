@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-// import { Users } from "./component/users/users";
+import styled from "styled-components";
+import { Users } from "./component/users/users";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -23,24 +24,62 @@ function App() {
   }, [searchField, users]);
 
   return (
-    <div className="app">
-      <input
+    <AppBlock>
+      <SearchBlock
         type="search"
         placeholder="searchField"
         onChange={(e) => setSearchField(e.target.value)}
-      ></input>
-      {/* <Users users={filteredUsers} /> */}
-      <div>
-        {users.map((user) => (
-          <>
-            <h2>{user.name}</h2>
-            <h4>{user.email}</h4>
-            {/* <User key={user.id} user={user} /> */}
-          </>
+      />
+      <UserBlock>
+        {filteredUsers.map((user) => (
+          <InfoWrapper>
+            <Name>{user.name}</Name>
+            <Email>{user.email}</Email>
+          </InfoWrapper>
         ))}
-      </div>
-    </div>
+      </UserBlock>
+    </AppBlock>
   );
 }
+
+const UserBlock = styled.div`
+  width: 80%;
+  margin-top: 10px;
+`;
+
+const InfoWrapper = styled.div`
+  width: 100%;
+  margin-top: 5px;
+  padding: 0 10px;
+`;
+
+const Name = styled.div`
+  font-size: 24px;
+  font-weight: 500;
+  width: 100%;
+`;
+const Email = styled.div`
+  font-size: 18px;
+`;
+
+const AppBlock = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SearchBlock = styled.input`
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 10px;
+  font-size: 24px;
+`;
 
 export default App;
