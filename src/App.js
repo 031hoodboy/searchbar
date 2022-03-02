@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Users } from "./component/users/users";
+// import { Users } from "./component/users/users";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -29,7 +29,16 @@ function App() {
         placeholder="searchField"
         onChange={(e) => setSearchField(e.target.value)}
       ></input>
-      <Users users={filteredUsers} />
+      {/* <Users users={filteredUsers} /> */}
+      <div>
+        {users.map((user) => (
+          <>
+            <h2>{user.name}</h2>
+            <h4>{user.email}</h4>
+            {/* <User key={user.id} user={user} /> */}
+          </>
+        ))}
+      </div>
     </div>
   );
 }
